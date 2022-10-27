@@ -1,6 +1,6 @@
 package com.expense.model;
 
-public class ExpenseData {
+public class ExpenseDatas {
 	
 		private String date;
 		private String category;

@@ -4,12 +4,12 @@ import java.util.Iterator;
 
 import com.expense.controller.ExpenseController;
 import com.expense.controller.InputController;
-import com.expense.model.ExpenseData;
+import com.expense.model.ExpenseDatas;
 
 public class ManageExpense {
 
-	private ExpenseController expenseController;
-	private InputController inputController;
+	 ExpenseController expenseController;
+     InputController inputController;
 
 	public ManageExpense() {
 		expenseController = new ExpenseController();
@@ -25,24 +25,24 @@ public class ManageExpense {
 		String format = "\n%-5s %-15s %-15s %-20s %-15s %-20s";
 		System.out.printf(format, "S.no", "Date", "Kind", "Category", "Amount", "Description\n");
 		int i = 1;
-		Iterator<ExpenseData> iterator = expenseController.getDatabaseList().iterator();
+		Iterator<ExpenseDatas> iterator = expenseController.getDatabaseList().iterator();
 		while (iterator.hasNext()) {
-			ExpenseData expenseData = iterator.next();
-			System.out.printf(format, (i++), expenseData.getDate(), expenseData.getKind(), expenseData.getCategory(),
-					expenseData.getAmount(), expenseData.getDescription() + "\n");
+			ExpenseDatas expenseDatas = iterator.next();
+			System.out.printf(format, (i++), expenseDatas.getDate(), expenseDatas.getKind(), expenseDatas.getCategory(),
+					expenseDatas.getAmount(), expenseDatas.getDescription() + "\n");
 		}
 		viewBalance();
 	}
 
-	public void viewBalance() {
+	protected void viewBalance() {
 		int totalIncome = 0, totalExpense = 0;
-		Iterator<ExpenseData> iterator = expenseController.getDatabaseList().iterator();
+		Iterator<ExpenseDatas> iterator = expenseController.getDatabaseList().iterator();
 		while (iterator.hasNext()) {
-			ExpenseData expenseData = iterator.next();
-			if (expenseData.getKind().equalsIgnoreCase("Income")) {
-				totalIncome += expenseData.getAmount();
+			ExpenseDatas expenseDatas = iterator.next();
+			if (expenseDatas.getKind().equalsIgnoreCase("Income")) {
+				totalIncome += expenseDatas.getAmount();
 			} else {
-				totalExpense += expenseData.getAmount();
+				totalExpense += expenseDatas.getAmount();
 			}
 		}
 		System.out.println("\n\nTotal Income Earned ----> Rs." + totalIncome);
@@ -56,17 +56,17 @@ public class ManageExpense {
 		}
 	}
 
-	public void searchTransaction() {
+	protected void searchTransaction() {
 		String category = inputController.getInput("Category : ", "[A-Za-z ]+");
 		String format = "\n%-5s %-10s %-10s %-20s %-15s %-20s";
-		Iterator<ExpenseData> iterator = expenseController.getDatabaseList().iterator();
+		Iterator<ExpenseDatas> iterator = expenseController.getDatabaseList().iterator();
 		int i = 1;
 		while (iterator.hasNext()) {
-			ExpenseData expenseData = iterator.next();
-			if ((expenseData.getCategory().equalsIgnoreCase(category))) {
+			ExpenseDatas expenseDatas = iterator.next();
+			if ((expenseDatas.getCategory().equalsIgnoreCase(category))) {
 				System.out.printf(format, "S.no", "Date", "Kind", "Category", "Amount", "Description\n");
-				System.out.printf(format, (i++), expenseData.getDate(), expenseData.getKind(),
-						expenseData.getCategory(), expenseData.getAmount(), expenseData.getDescription() + "\n");
+				System.out.printf(format, (i++), expenseDatas.getDate(), expenseDatas.getKind(),
+						expenseDatas.getCategory(), expenseDatas.getAmount(), expenseDatas.getDescription() + "\n");
 			}
 		}
 	}
