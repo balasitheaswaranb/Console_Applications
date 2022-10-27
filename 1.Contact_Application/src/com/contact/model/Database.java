@@ -5,9 +5,9 @@ import java.util.ArrayList;
 
 public class Database {
 	static Database database;
-	ContactDetails newContact;
 	private ArrayList<ContactDetails> dbArrayList;
 	DatabaseConnection databaseConnection;
+	ContactDetails newContact;
 
 	private Database() {
 		dbArrayList = new ArrayList<>();

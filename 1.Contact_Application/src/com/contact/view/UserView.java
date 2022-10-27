@@ -7,11 +7,12 @@ import com.contact.model.ContactDetails;
 
 public class UserView {
 	Process process;
-UserView(){
-	process = new Process();
-}
 
-	public void printAllContacts() {
+	UserView() {
+		process = new Process();
+	}
+
+	protected void printAllContacts() {
 		Process process = new Process();
 		Iterator<ContactDetails> contactsIterator = process.getContactsArrayList().iterator();
 		while (contactsIterator.hasNext()) {
@@ -33,12 +34,12 @@ UserView(){
 		System.out.println("\n\t[0] - Back to Main menu options.\n");
 	}
 
-	public void searchContact(String contactName) {
+	protected void searchContact(String contactName) {
 		Iterator<ContactDetails> contactsIterator = process.getContactsArrayList().iterator();
 		int count = 0;
 		while (contactsIterator.hasNext()) {
 			ContactDetails currentContact = contactsIterator.next();
-			String contactNameToLower =currentContact.getName().toLowerCase();
+			String contactNameToLower = currentContact.getName().toLowerCase();
 			if (contactNameToLower.startsWith(contactName)) {
 				System.out.println("Name: " + currentContact.getName() + " ,  " + "Mobile number: "
 						+ currentContact.getPhoneNumber() + "\n");
@@ -50,7 +51,7 @@ UserView(){
 		}
 	}
 
-	public void searchFavourite(String contactType) {
+	protected void searchFavourite(String contactType) {
 
 		Iterator<ContactDetails> contactsIterator = process.getContactsArrayList().iterator();
 		int count = 0;

@@ -5,20 +5,20 @@ import java.util.Scanner;
 
 import com.contact.model.Database;
 
-public class AppConsole {
+public class MainView {
 	Scanner scanner = new Scanner(System.in);
 	UserInput userInput;
 	
-	AppConsole() {
+	MainView() {
 		userInput = new UserInput();
 	}
 	
-	public void initiate() {
+	protected void initiate() {
 		Database.getInstance().getDataFromDb();
 		displayOptions();
 	}
 
-	protected void displayOptions() {
+	private void displayOptions() {
 		boolean quit = false;
 		System.out.print("\nHii Sitheas Welcome to Contacts application \n");
 		
