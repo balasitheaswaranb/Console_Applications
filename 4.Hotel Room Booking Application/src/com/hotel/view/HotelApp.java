@@ -1,4 +1,4 @@
-package com.view;
+package com.hotel.view;
 
 public class HotelApp {
 	private ShowServices menuView = new ShowServices();

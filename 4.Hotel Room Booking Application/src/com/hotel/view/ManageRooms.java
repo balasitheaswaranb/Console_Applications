@@ -1,8 +1,8 @@
-package com.view;
+package com.hotel.view;
 
 import java.util.Scanner;
 
-import com.controller.BookingController;
+import com.hotel.controller.BookingController;
 
 public class ManageRooms {
 	Scanner scanner = new Scanner(System.in);

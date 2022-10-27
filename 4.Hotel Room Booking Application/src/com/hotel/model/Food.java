@@ -1,4 +1,4 @@
-package com.model;
+package com.hotel.model;
 
 public class Food {
 	private int chosenFoodNo;

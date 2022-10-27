@@ -1,4 +1,4 @@
-package com.controller;
+package com.hotel.controller;
 
 public class LoginController {
 	

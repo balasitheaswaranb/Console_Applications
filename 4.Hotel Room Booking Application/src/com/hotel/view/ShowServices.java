@@ -1,8 +1,9 @@
-package com.view;
+package com.hotel.view;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import com.controller.LoginController;
+
+import com.hotel.controller.LoginController;
 
 public class ShowServices {
 	Scanner scanner = new Scanner(System.in);

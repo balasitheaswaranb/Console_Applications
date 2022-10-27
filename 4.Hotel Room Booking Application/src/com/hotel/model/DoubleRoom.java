@@ -1,4 +1,4 @@
-package com.model;
+package com.hotel.model;
 
 public class DoubleRoom extends SingleRoom {
 	private String secondCustomerName;

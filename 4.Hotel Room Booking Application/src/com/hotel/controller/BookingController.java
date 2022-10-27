@@ -1,8 +1,9 @@
-package com.controller;
+package com.hotel.controller;
 import java.util.Scanner;
-import com.model.DoubleRoom;
-import com.model.Food;
-import com.model.SingleRoom;
+
+import com.hotel.model.DoubleRoom;
+import com.hotel.model.Food;
+import com.hotel.model.SingleRoom;
 
 public class BookingController {
 	Scanner scanner = new Scanner(System.in);
