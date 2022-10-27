@@ -3,7 +3,8 @@ package com.railway.reservation;
 import java.util.Scanner;
 
 public class PassengerDetail {
-	
+	Scanner scanner = new Scanner(System.in);
+	Passenger passenger = new Passenger();
 	static int i = 1;
 
 	public Passenger passengerDetailCollecting() {
@@ -12,45 +13,41 @@ public class PassengerDetail {
 		int age, childAge;
 		Passenger.Gender gender = null, childGender = null;
 		Passenger.Berth berthPreference = null;
-
-		Passenger p = new Passenger();
-
-		Scanner detail = new Scanner(System.in);
 		System.out.print("Enter passenger's Name                                    : ");
-		name = detail.next();
-		p.setName(name);
+		name = scanner.next();
+		passenger.setName(name);
 		System.out.print("Enter passenger's Age                                     : ");
-		age = detail.nextInt();
+		age = scanner.nextInt();
 		if (age > 5) {
-			p.setAge(age);
+			passenger.setAge(age);
 		} else {
 			System.out.println("Age must be greater than 5 for Passenger.");
 			return null;
 		}
 		System.out.print("Enter passenger's Gender as [F or M or O]                 : ");
-		String g = detail.next();
+		String g = scanner.next();
 		if (g.equalsIgnoreCase("F") || g.equalsIgnoreCase("M")) {
 			if (g.equalsIgnoreCase("F")) {
 				gender = Passenger.Gender.FEMALE;
 			} else if (g.equalsIgnoreCase("M")) {
 				gender = Passenger.Gender.MALE;
 			}
-			p.setGender(gender);
+			passenger.setGender(gender);
 			System.out.println("\tYou travel with your child under 5 or equal old ?");
 			System.out.println("\t1. Yes.");
 			System.out.println("\t2. No.");
 			System.out.println("\t-------------------------------------------------\n");
 			System.out.print("\tEnter your choice : ");
-			int gChoice = detail.nextInt();
+			int gChoice = scanner.nextInt();
 			if (gChoice == 1) {
 				System.out.print("\tEnter your child's Age                : ");
-				childAge = detail.nextInt();
+				childAge = scanner.nextInt();
 				if (childAge > 0) {
 					if (childAge <= 5) {
 						System.out.print("\tEnter your child's Name               : ");
-						childName = detail.next();
+						childName = scanner.next();
 						System.out.print("\tEnter your child's Gender as [F or M] : ");
-						g = detail.next();
+						g = scanner.next();
 						if (g.equalsIgnoreCase("F")) {
 							childGender = Passenger.Gender.FEMALE;
 						} else if (g.equalsIgnoreCase("M")) {
@@ -59,11 +56,11 @@ public class PassengerDetail {
 							System.out.println("Child gender must be in above mentioned characters.");
 							return null;
 						}
-						p.setChildName(childName);
-						p.setChildAge(childAge);
-						p.setChildGender(childGender);
+						passenger.setChildName(childName);
+						passenger.setChildAge(childAge);
+						passenger.setChildGender(childGender);
 						System.out.print("Enter passenger's Berth Preference as [U or M or L or SU] : ");
-						String bp = detail.next();
+						String bp = scanner.next();
 						if (bp.equalsIgnoreCase("U")) {
 							berthPreference = Passenger.Berth.UPPER_BERTH;
 						} else if (bp.equalsIgnoreCase("M")) {
@@ -76,9 +73,9 @@ public class PassengerDetail {
 							System.out.println("Berth Preference must be in above mentioned character.");
 							return null;
 						}
-						p.pnrNumber = i++;
-						p.setBerthPreference(berthPreference);
-						return p;
+						passenger.pnrNumber = i++;
+						passenger.setBerthPreference(berthPreference);
+						return passenger;
 					} else {
 						System.out.println("You Book a Separate Ticket for your Child.");
 					}
@@ -91,7 +88,7 @@ public class PassengerDetail {
 				childAge = 0;
 				childGender = null;
 				System.out.print("Enter passenger's Berth Preference as [U or M or L or SU] : ");
-				String bp = detail.next();
+				String bp = scanner.next();
 				if (bp.equalsIgnoreCase("U")) {
 					berthPreference = Passenger.Berth.UPPER_BERTH;
 				} else if (bp.equalsIgnoreCase("M")) {
@@ -104,12 +101,12 @@ public class PassengerDetail {
 					System.out.println("Berth Preference must be in above mentioned character.");
 					return null;
 				}
-				p.pnrNumber = i++;
-				p.setChildName(childName);
-				p.setChildAge(childAge);
-				p.setChildGender(childGender);
-				p.setBerthPreference(berthPreference);
-				return p;
+				passenger.pnrNumber = i++;
+				passenger.setChildName(childName);
+				passenger.setChildAge(childAge);
+				passenger.setChildGender(childGender);
+				passenger.setBerthPreference(berthPreference);
+				return passenger;
 			} else {
 				System.out.println("Please select the above options only.");
 				return null;
@@ -120,7 +117,7 @@ public class PassengerDetail {
 			childAge = 0;
 			childGender = null;
 			System.out.print("Enter passenger's Berth Preference as [U or M or L or SU] : ");
-			String bp = detail.next();
+			String bp = scanner.next();
 			if (bp.equalsIgnoreCase("U")) {
 				berthPreference = Passenger.Berth.UPPER_BERTH;
 			} else if (bp.equalsIgnoreCase("M")) {
@@ -133,13 +130,13 @@ public class PassengerDetail {
 				System.out.println("Berth Preference must be in above mentioned character.");
 				return null;
 			}
-			p.pnrNumber = i++;
-			p.setGender(childGender);
-			p.setChildName(childName);
-			p.setChildAge(childAge);
-			p.setChildGender(childGender);
-			p.setBerthPreference(berthPreference);
-			return p;
+			passenger.pnrNumber = i++;
+			passenger.setGender(childGender);
+			passenger.setChildName(childName);
+			passenger.setChildAge(childAge);
+			passenger.setChildGender(childGender);
+			passenger.setBerthPreference(berthPreference);
+			return passenger;
 		} else {
 			System.out.println("Passenger's gender must be in above mentioned charcters.");
 			return null;

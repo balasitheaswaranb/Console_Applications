@@ -6,45 +6,45 @@ import java.util.LinkedList;
 import java.util.TreeMap;
 
 public class Administrator {
-	
+	Scanner scanner = new Scanner(System.in);
 	static String adminID = "admin";
-	
+
 	private static int availableLowerBerth;
 	private static int availableMiddleBerth;
 	private static int availableUpperBerth;
 	private static int availableSideUpperBerth;
 	private static int availableRACTicket;
 	private static int availableWaitingTicket;
-	
+
 	static Queue<Integer> racTicketList;
 	static Queue<Integer> waitingTicketList;
 	static TreeMap<Integer, Passenger> passengersList;
 
-	Administrator(){
+	Administrator() {
 		racTicketList = new LinkedList<>();
 		waitingTicketList = new LinkedList<>();
 		passengersList = new TreeMap<>();
 	}
-	
+
 	public void numberOfBerthAllocation() {
-		Scanner count = new Scanner(System.in);
+
 		System.out.print("Enter Total Number of Tickets : ");
-		int totalCount = count.nextInt();
-		int waiting = (totalCount * 10)/100;
-		Administrator.availableRACTicket = (totalCount * 20)/100;
-		Administrator.availableLowerBerth = (totalCount * 20)/100;
-		Administrator.availableMiddleBerth = (totalCount * 20)/100;
-		Administrator.availableUpperBerth = (totalCount * 20)/100;
-		if(totalCount > 10) {
-			Administrator.availableSideUpperBerth = (totalCount * 10)/100;
-		}else {
-			Administrator.availableSideUpperBerth = (totalCount * 20)/100;
+		int totalCount = scanner.nextInt();
+		int waiting = (totalCount * 10) / 100;
+		Administrator.availableRACTicket = (totalCount * 20) / 100;
+		Administrator.availableLowerBerth = (totalCount * 20) / 100;
+		Administrator.availableMiddleBerth = (totalCount * 20) / 100;
+		Administrator.availableUpperBerth = (totalCount * 20) / 100;
+		if (totalCount > 10) {
+			Administrator.availableSideUpperBerth = (totalCount * 10) / 100;
+		} else {
+			Administrator.availableSideUpperBerth = (totalCount * 20) / 100;
 		}
-		int total = Administrator.availableLowerBerth + Administrator.availableMiddleBerth + 
-				Administrator.availableUpperBerth + Administrator.availableSideUpperBerth + 
-				Administrator.availableRACTicket + waiting;
-		Administrator.availableWaitingTicket = (waiting + (totalCount-total));
-		
+		int total = Administrator.availableLowerBerth + Administrator.availableMiddleBerth
+				+ Administrator.availableUpperBerth + Administrator.availableSideUpperBerth
+				+ Administrator.availableRACTicket + waiting;
+		Administrator.availableWaitingTicket = (waiting + (totalCount - total));
+
 	}
 
 	public static int getAvailableLowerBerth() {
@@ -93,5 +93,5 @@ public class Administrator {
 
 	public static void setAvailableWaitingTicket(int availableWaitingTicket) {
 		Administrator.availableWaitingTicket = availableWaitingTicket;
-	}	
+	}
 }

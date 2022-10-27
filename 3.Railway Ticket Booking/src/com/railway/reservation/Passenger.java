@@ -1,29 +1,6 @@
 package com.railway.reservation;
 
 public class Passenger {
-	
-	enum Gender{
-		FEMALE,
-		MALE,
-		OTHERS;
-	}
-	
-	enum Berth{
-		LOWER_BERTH,
-		MIDDLE_BERTH,
-		UPPER_BERTH,
-		SIDE_UPPER_BERTH;
-	}
-	
-	enum AllotedBerth{
-		LOWER_BERTH,
-		MIDDLE_BERTH,
-		UPPER_BERTH,
-		SIDE_UPPER_BERTH,
-		RAC,
-		WAITHING_LIST;
-	}
-	
 	private String name;
 	private int age;
 	private Gender gender;
@@ -92,5 +69,27 @@ public class Passenger {
 
 	public void setBerthPreference(Berth berthPreference) {
 		this.berthPreference = berthPreference;
+	}
+	
+	enum Gender{
+		FEMALE,
+		MALE,
+		OTHERS;
+	}
+	
+	enum Berth{
+		LOWER_BERTH,
+		MIDDLE_BERTH,
+		UPPER_BERTH,
+		SIDE_UPPER_BERTH;
+	}
+	
+	enum AllotedBerth{
+		LOWER_BERTH,
+		MIDDLE_BERTH,
+		UPPER_BERTH,
+		SIDE_UPPER_BERTH,
+		RAC,
+		WAITHING_LIST;
 	}
 }
