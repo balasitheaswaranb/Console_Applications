@@ -1,7 +1,7 @@
 package com.expense.view;
 
 public class ExpenseApp {
-	private ViewMenu menu = new ViewMenu();
+	private MainView menu = new MainView();
 
 	public static void main(String[] args) {
 		ExpenseApp expenseApp = new ExpenseApp();

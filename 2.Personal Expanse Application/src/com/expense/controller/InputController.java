@@ -3,20 +3,20 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.expense.view.ManageExpense;
+
 public class InputController {
 		 Scanner scan = new Scanner(System.in);
 		 
-		public String getInput(String field, String regex) {
-			String input;
-			System.out.print("\nEnter " + field);
-			input = scan.nextLine();
+		public String checkInput(String input,String field, String regex) {
+			
 			Pattern pattern = Pattern.compile(regex);
 			Matcher matcher = pattern.matcher(input);
 			if (matcher.matches())
 				return input;
 			else {
 				System.out.println("Invalid input!!");
-				return getInput(field, regex);
+				return new ManageExpense().getInput(field,regex);
 			}
 		}
 

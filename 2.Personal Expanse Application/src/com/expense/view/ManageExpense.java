@@ -1,13 +1,13 @@
 package com.expense.view;
 
 import java.util.Iterator;
-
+import java.util.Scanner;
 import com.expense.controller.ExpenseController;
 import com.expense.controller.InputController;
 import com.expense.model.ExpenseDatas;
 
 public class ManageExpense {
-
+     Scanner scanner = new Scanner(System.in);
 	 ExpenseController expenseController;
      InputController inputController;
 
@@ -23,7 +23,7 @@ public class ManageExpense {
 
 	protected void viewAllExpense() {
 		String format = "\n%-5s %-15s %-15s %-20s %-15s %-20s";
-		System.out.printf(format, "S.no", "Date", "Kind", "Category", "Amount", "Description\n");
+		System.out.printf(format, "S.no", "Date", "Kind", "Category", "Amount", "Notes\n");
 		int i = 1;
 		Iterator<ExpenseDatas> iterator = expenseController.getDatabaseList().iterator();
 		while (iterator.hasNext()) {
@@ -45,19 +45,19 @@ public class ManageExpense {
 				totalExpense += expenseDatas.getAmount();
 			}
 		}
-		System.out.println("\n\nTotal Income Earned ----> Rs." + totalIncome);
-		System.out.println("\nTotal Expense Made ----> Rs." + totalExpense);
+		System.out.println("\n\nTotal Income in Rs." + totalIncome);
+		System.out.println("\nTotal Expense Made in Rs." + totalExpense);
 		if (totalIncome > totalExpense) {
-			System.out.println("\nBalance  --> Rs. " + (totalIncome - totalExpense));
+			System.out.println("\nBalance in Rs. " + (totalIncome - totalExpense));
 		} else if (totalIncome < totalExpense) {
-			System.out.println("\nBalance  --> Rs. -" + (totalExpense - totalIncome));
+			System.out.println("\nBalance in Rs. -" + (totalExpense - totalIncome));
 		} else {
-			System.out.println("\nBalance --> Rs.0");
+			System.out.println("\nBalance Rs.0");
 		}
 	}
 
 	protected void searchTransaction() {
-		String category = inputController.getInput("Category : ", "[A-Za-z ]+");
+		String category = getInput("Category Type: ", "[A-Za-z ]+");
 		String format = "\n%-5s %-10s %-10s %-20s %-15s %-20s";
 		Iterator<ExpenseDatas> iterator = expenseController.getDatabaseList().iterator();
 		int i = 1;
@@ -69,5 +69,11 @@ public class ManageExpense {
 						expenseDatas.getCategory(), expenseDatas.getAmount(), expenseDatas.getDescription() + "\n");
 			}
 		}
+	}
+	public String getInput(String field, String regex) {
+		String input;
+		System.out.print("\nEnter " + field);
+		input = scanner.nextLine();
+		return inputController.checkInput(input,field,regex);
 	}
 }

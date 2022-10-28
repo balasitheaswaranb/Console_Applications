@@ -6,12 +6,12 @@ import java.util.Scanner;
 import com.expense.controller.InputController;
 import com.expense.model.Database;
 
-public class ViewMenu {
+public class MainView {
 	Scanner scanner = new Scanner(System.in);
 	ManageExpense manageExpense;
 	InputController controller;
 	
-	ViewMenu() {
+	MainView() {
 		manageExpense = new ManageExpense();
 		controller = new InputController();
 	}
@@ -56,7 +56,7 @@ public class ViewMenu {
 	}
 
 	private void printOptions() {
-		System.out.print("\n***********************\n1) Add Income or Expense \n2) View All Transaction\n3)"
+		System.out.print("\n***********************\n1) Add Income or Expense Details \n2) View All Transaction\n3)"
 				+ " Search Transaction\n4) View Balance	\n5) Exit	\n***********************\nEnter option..");
 	}
 	
